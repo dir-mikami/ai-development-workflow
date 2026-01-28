@@ -162,11 +162,12 @@ export default function TetrisPage() {
 
   // Game loop
   useEffect(() => {
+    if (gameLoopRef.current) {
+      clearInterval(gameLoopRef.current)
+      gameLoopRef.current = null
+    }
+
     if (gameOver || isPaused) {
-      if (gameLoopRef.current) {
-        clearInterval(gameLoopRef.current)
-        gameLoopRef.current = null
-      }
       return
     }
 
